@@ -1,15 +1,42 @@
+// Bouton retour en haut
+window.addEventListener('DOMContentLoaded', function() {
+    var backToTop = document.getElementById('backToTop');
+    function toggleBackToTop() {
+        if (window.scrollY > 200) {
+            backToTop.classList.add('show');
+        } else {
+            backToTop.classList.remove('show');
+        }
+    }
+    window.addEventListener('scroll', toggleBackToTop);
+    backToTop.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    toggleBackToTop();
+});
+// Animation fade-in sur les sections au scroll (fix)
+window.addEventListener('DOMContentLoaded', function() {
+    function revealSections() {
+        document.querySelectorAll('.fade-in').forEach(function(section) {
+            var rect = section.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 80) {
+                section.classList.add('animated');
+            }
+        });
+    }
+    window.addEventListener('scroll', revealSections);
+    revealSections();
+});
 
         var contactRevealed = {
             phone: false,
-            email: false,
-            whatsapp: false
+            email: false
         };
 
         function getContactInfo(type) {
             var info = {
                 phone: { value: '+225 05 64 07 17 05', url: 'tel:+2250564071705' },
-                email: { value: 'souleymaneouattara1509@gmail.com', url: 'mailto:souleymaneouattara1509@gmail.com' },
-                whatsapp: { value: 'Ouvrir WhatsApp', url: 'https://wa.me/2250564071705' }
+                email: { value: 'souleymaneouattara1509@gmail.com', url: 'mailto:souleymaneouattara1509@gmail.com' }
             };
             return info[type];
         }
@@ -20,7 +47,6 @@
                 var element = document.getElementById(type + '-info');
                 element.textContent = info.value;
                 contactRevealed[type] = true;
-                
                 if (type !== 'email') {
                     setTimeout(function() {
                         window.open(info.url, '_blank');
@@ -34,62 +60,28 @@
             }
         }
 
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            var name = document.getElementById('name').value.trim();
-            var email = document.getElementById('email').value.trim();
-            var subject = document.getElementById('subject').value.trim();
-            var message = document.getElementById('message').value.trim();
-
-            // Validation simple
-            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!name || !email || !subject || !message) {
-                alert('Veuillez remplir tous les champs.');
-                return;
-            }
-            if (!emailRegex.test(email)) {
-                alert('Veuillez entrer une adresse email valide.');
-                return;
-            }
-
-            var emailBody = 'Nom: ' + name + '%0D%0A' +
-                           'Email: ' + email + '%0D%0A' +
-                           'Sujet: ' + subject + '%0D%0A%0D%0A' +
-                           'Message:%0D%0A' + message;
-
-            window.location.href = 'mailto:souleymaneouattara1509@gmail.com?subject=' + 
-                                  encodeURIComponent(subject) + 
-                                  '&body=' + emailBody;
-
-            document.getElementById('success-message').classList.add('show');
-            document.getElementById('contact-form').reset();
-
-            setTimeout(function() {
-                document.getElementById('success-message').classList.remove('show');
-            }, 5000);
-        });
 
         function toggleTheme() {
-            var body = document.body;
-            var nav = document.querySelector('nav');
-            var themeIcon = document.getElementById('theme-icon');
-            
-            if (body.classList.contains('light')) {
-                body.classList.remove('light');
-                body.classList.add('dark');
-                nav.classList.remove('light');
-                nav.classList.add('dark');
-                themeIcon.textContent = '☀️';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                body.classList.remove('dark');
-                body.classList.add('light');
-                nav.classList.remove('dark');
-                nav.classList.add('light');
-                themeIcon.textContent = '🌙';
-                localStorage.setItem('theme', 'light');
-            }
+    var body = document.body;
+    var nav = document.querySelector('nav');
+    var themeIcon = document.getElementById('theme-icon');
+    if (body.classList.contains('light')) {
+        body.classList.remove('light');
+        body.classList.add('dark');
+        nav.classList.remove('light');
+        nav.classList.add('dark');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+        localStorage.setItem('theme', 'dark');
+    } else {
+        body.classList.remove('dark');
+        body.classList.add('light');
+        nav.classList.remove('dark');
+        nav.classList.add('light');
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+        localStorage.setItem('theme', 'light');
+    }
         }
 
         window.addEventListener('DOMContentLoaded', function() {
@@ -104,8 +96,12 @@
             sections.forEach(function(section) {
                 section.classList.remove('active');
             });
-            document.getElementById(sectionId).classList.add('active');
-            
+            var target = document.getElementById(sectionId);
+            target.classList.add('active');
+            // Scroll fluide vers la section
+            setTimeout(function() {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 50);
             document.querySelector('.nav-links').classList.remove('active');
         }
 

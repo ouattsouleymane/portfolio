@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="light">
+    <button id="backToTop" aria-label="Retour en haut" title="Retour en haut">
+        <i class="fas fa-arrow-up"></i>
+    </button>
     <nav class="light">
         <div class="nav-container">
             <div class="logo-wrapper">
@@ -22,38 +25,57 @@
                 <li><a onclick="showSection('accueil')">Accueil</a></li>
                 <li><a onclick="showSection('apropos')">À propos</a></li>
                 <li><a onclick="showSection('projets')">Projets</a></li>
+                <li><a onclick="showSection('timeline')">Parcours</a></li>
                 <li><a onclick="showSection('competences')">Compétences</a></li>
                 <li><a onclick="showSection('contact')">Contact</a></li>
             </ul>
             <div class="nav-controls">
                 <button class="theme-toggle" onclick="toggleTheme()">
-                    <span id="theme-icon">🌙</span>
+                    <i id="theme-icon" class="fas fa-moon"></i>
                 </button>
                 <button class="mobile-menu" onclick="toggleMobileMenu()">☰</button>
             </div>
         </div>
     </nav>
 
-    <section id="accueil" class="active">
-        <div class="about-avatar">
-                <div class="avatar">
-                        <span>SO</span>
-                </div>
-                
-            </div>
-        <h1>Hey, je suis <span style="background: linear-gradient(45deg, #545868, #3f3b42); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Souleymane Ouattara</span></h1>
-        <p class="subtitle">Développeur Web Backend</p>
-        <div class="btn-group">
-            <button class="btn btn-primary" onclick="downloadCV()">
-                📥 Télécharger mon CV
-            </button>
-            <button class="btn btn-secondary" onclick="showSection('contact')">
-                Me contacter
-            </button>
-        </div>
-    </section>
+<section id="accueil" class="banner active">
+ 
+  <div class="container">
+<h1 class="headline">
+      Développeur web 
+    </h1>
+    <h2 class="line">
+      Je conçois des applications web et mobiles performantes et bien structurées.
+      Je transforme vos besoins en solutions techniques efficaces et innovantes
+    </h2>
 
-    <section id="apropos">
+
+
+
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="downloadCV()" aria-label="Télécharger mon CV">
+        <i class="fas fa-download"></i> Télécharger mon CV
+      </button>
+      <button class="btn btn-secondary" onclick="showSection('contact')" aria-label="Aller à la section contact">
+        <i class="fas fa-envelope"></i> Me contacter
+      </button>
+    </div>
+  </div>
+</section>
+
+
+    <section id="apropos" class="fade-in">
+             <div class="about-avatar">
+        <div class="avatar avatar-glow">
+            <span>SO</span>
+        </div><br>
+               <h2 class="main-title">
+      <span class="typing-gradient" id="main-title">Ouattara souleymane</span>
+    </h2>
+                <p class="subtitle">
+      Développeur Web Backend
+    </p>
+    </div>
         <h2 class="section-title">À propos de moi</h2>
         <div class="about-content">
             
@@ -68,33 +90,98 @@
         </div>
     </section>
 
-    <section id="projets">
-        <h2 class="section-title">Mes Projets</h2>
-        <div class="card-grid">
-            <div class="card">
-                <div class="card-icon">💻</div>
-                <h3>Mise à jour d'un logiciel de gestion d'une grande école</h3>
-                <p>Application de gestion d'une grande école en local permettant la programmation des cours par classe, la création des classes, gestion des permissions des utilisateurs.</p>
-                <div class="tags">
-                    <span class="tag">PHP</span>
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-icon">📊</div>
-                <h3>Système de Décompte de Voix</h3>
-                <p>Tableau de bord interactif pour la visualisation de données en temps réel avec graphiques dynamiques.</p>
-                <div class="tags">
-                    <span class="tag">Laravel</span>
-                    <span class="tag">HTML/CSS</span>
-                    <span class="tag">JavaScript</span>
-                </div>
+<section id="projets" class="fade-in">
+    <h2 class="section-title">Mes Projets</h2>
+    <div class="card-grid">
+
+        <div class="card">
+            <h3>Mise à jour d'un logiciel de gestion d'une grande école</h3>
+            <p>
+                Application de gestion complète d'une grande école en local, incluant :
+                <ul>
+                    <li>Programmation des cours par classe</li>
+                    <li>Création et gestion des classes</li>
+                    <li>Gestion des permissions des utilisateurs et des rôles</li>
+                </ul>
+            </p>
+            <div class="tags">
+                <span class="tag">PHP</span>
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
             </div>
         </div>
-    </section>
 
-    <section id="competences">
+
+        <div class="card">
+            <h3>Système de Décompte de Voix</h3>
+            <p>
+                Tableau de bord interactif pour la visualisation et la saisie de données électorales en temps réel :
+                <ul>
+                    <li>Affichage dynamique des résultats par bureau de vote</li>
+                    <li>Graphiques interactifs pour suivi des tendances</li>
+                    <li>Gestion sécurisée des utilisateurs et validations des résultats</li>
+                </ul>
+            </p>
+            <div class="tags">
+                <span class="tag">Laravel</span>
+                <span class="tag">HTML/CSS</span>
+                <span class="tag">JavaScript</span>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <h3>Portfolio Personnel “The Visionary”</h3>
+            <p>
+                Site vitrine en HTML, CSS et JS pur pour présenter mes compétences et projets :
+                <ul>
+                    <li>Design moderne et responsive</li>
+                    <li>Sections interactives pour les projets et le profil</li>
+                    <li>Optimisation de l’expérience utilisateur et navigation fluide</li>
+                </ul>
+            </p>
+            <div class="tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <!-- Section Timeline -->
+        <section id="timeline" class="fade-in">
+            <h2 class="section-title">Parcours </h2>
+            <div class="timeline-container">
+
+                                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2024-Aujourd'hui</div>
+                    <div class="timeline-content">
+                        <h3>Master Informatique</h3>
+                        <p>AGITEL-FORMATION.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2021 - 2024</div>
+                    <div class="timeline-content">
+                        <h3>Licence Informatique</h3>
+                        <p>AGITEL-FORMATION. </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2020 - 2021</div>
+                    <div class="timeline-content">
+                        <h3>Baccalauréat Scientifique</h3>
+                        <p>Lycée Houphouet Boigny, Korhogo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <section id="competences" class="fade-in">
         <h2 class="section-title">Mes Compétences</h2>
         <div class="card-grid">
             <div class="card">
@@ -142,39 +229,48 @@
         </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="fade-in">
         <h2 class="section-title">Contactez-moi</h2>
         
         <div class="contact-form-container">
-            <div id="success-message" class="success-message">
-                ✅ Merci ! Votre message a été envoyé avec succès.
-            </div>
-            
-            <form id="contact-form">
+            <form id="contact-form" action="https://formspree.io/f/xqayvpwk" method="POST">
                 <div class="form-group">
                     <label for="name">Nom complet *</label>
                     <input type="text" id="name" name="name" required>
                 </div>
-                
                 <div class="form-group">
                     <label for="email">Email *</label>
                     <input type="email" id="email" name="email" required>
                 </div>
-                
                 <div class="form-group">
                     <label for="subject">Sujet *</label>
                     <input type="text" id="subject" name="subject" required>
                 </div>
-                
                 <div class="form-group">
                     <label for="message">Message *</label>
                     <textarea id="message" name="message" required></textarea>
                 </div>
-                
-                <button type="submit" class="btn btn-primary" style="width: 100%;">
-                    📧 Envoyer le message
+                <button type="submit" class="btn btn-primary" style="width: 100%; text-align: center;" >
+                    <i class="fas fa-message"></i> Envoyer le message
                 </button>
+                <div id="success-message" class="success-message" style="display:none; margin-top:1rem;">
+                    Merci ! Votre message a été envoyé avec succès.
+                </div>
             </form>
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var form = document.getElementById('contact-form');
+                if(form) {
+                    form.addEventListener('submit', function(e) {
+                        setTimeout(function() {
+                            form.reset();
+                            var msg = document.getElementById('success-message');
+                            if(msg) { msg.style.display = 'block'; }
+                        }, 1000);
+                    });
+                }
+            });
+            </script>
         </div>
 
         <div style="text-align: center; margin: 3rem 0 1rem; opacity: 0.7;">
@@ -182,11 +278,11 @@
         </div>
         <div class="contact-links">
             <div class="contact-link" onclick="revealContact('phone')">
-                <span style="font-size: 1.5rem;"></span>
+                <i class="fas fa-phone"></i>
                 <span id="phone-info">Cliquez pour afficher le numéro</span>
             </div>
             <div class="contact-link" onclick="revealContact('email')">
-                <span style="font-size: 1.5rem;">📧</span>
+                <i class="fas fa-envelope"></i>
                 <span id="email-info">Cliquez pour afficher l'email</span>
             </div>
         </div>
@@ -198,15 +294,15 @@
                 <div class="icon-links">
             
             
-            <a href="https://github.com/ouattsouleymane" target="_blank" class="icon-link">
+            <a href="https://github.com/ouattsouleymane" target="_blank" rel="noopener noreferrer" class="icon-link">
                 <i class="fab fa-github"></i>
             </a>
-            <a href="https://linkedin.com/in/souleymane-ouattara-87793731a" target="_blank" class="icon-link">
+            <a href="https://linkedin.com/in/souleymane-ouattara-87793731a" rel="noopener noreferrer" target="_blank" class="icon-link">
                 <i class="fab fa-linkedin"></i>
             </a>
-            <div class="contact-link" onclick="revealContact('whatsapp')">
+            <a href="https://wa.me/2250564071705" target="_blank" rel="noopener noreferrer" class="icon-link" aria-label="WhatsApp">
                 <i class="fab fa-whatsapp"></i>
-            </div>
+            </a>
         </div>
         <p>© 2025 The Visionary. Tous droits réservés.</p>
     </footer>
