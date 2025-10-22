@@ -107,7 +107,7 @@ footer {
     margin-left: 0.3em;
 }
 @media (max-width: 600px) {
-    .headline { font-size: 3.5rem; }
+    .headline { font-size: 3rem; }
     .main-title { font-size: 1.3rem; }
     .skills-animated { gap: 0.3rem; }
     .line{
@@ -908,6 +908,8 @@ footer {
             .about-content {
                 padding: 1.5rem;
                 font-size: 1rem;
+                margin-left: 0; /* Supprime les marges latérales pour mobile */
+                margin-right: 0;
             }
 
             .card {
@@ -917,6 +919,8 @@ footer {
             .card-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
+                margin-left: 0; /* Supprime les marges latérales pour mobile */
+                margin-right: 0;
             }
 
             section {
