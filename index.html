@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - The Visionary</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -27,7 +28,7 @@
                 <li><a onclick="showSection('projets')">Projets</a></li>
                 <li><a onclick="showSection('timeline')">Parcours</a></li>
                 <li><a onclick="showSection('competences')">Compétences</a></li>
-                <li><a onclick="showSection('contact')">Contact</a></li>
+                <li><a href="cv_souleymane.pdf" target="_blank">CV</a></li>
             </ul>
             <div class="nav-controls">
                 <button class="theme-toggle" onclick="toggleTheme()">
@@ -40,116 +41,133 @@
 
 <section id="accueil" class="banner active">
  
-  <div class="container">
-<h1 class="headline">
-      Développeur web 
-    </h1>
-    <h2 class="line">
-      Je conçois des applications web et mobiles performantes et bien structurées.
-      Je transforme vos besoins en solutions techniques efficaces et innovantes
-    </h2>
-
-
-
-
-    <div class="btn-group">
-      <button class="btn btn-primary" onclick="downloadCV()" aria-label="Télécharger mon CV">
-        <i class="fas fa-download"></i> Télécharger mon CV
-      </button>
-      <button class="btn btn-secondary" onclick="showSection('contact')" aria-label="Aller à la section contact">
-        <i class="fas fa-envelope"></i> Me contacter
-      </button>
+   <div class="container">
+        <div><h1>Hey, je suis OUATTARA SOULEYMANE</h1>
+        <p>Développeur web backend. Je crée des expériences web modernes, accessibles et sécurisées.<br/>Je conçois des interfaces élégantes, résous des défis de conception complexes <br/>et donne vie aux idées grâce à un code propre et évolutif.</p>
+             <p><a onclick="showSection('apropos')">en savoir plus</a></p>
+        </div>
+        
     </div>
-  </div>
 </section>
 
 
     <section id="apropos" class="fade-in">
-             <div class="about-avatar">
-        <div class="avatar avatar-glow">
-            <span>SO</span>
-        </div><br>
-               <h2 class="main-title">
-      <span class="typing-gradient" id="main-title">Ouattara souleymane</span>
-    </h2>
-                <p class="subtitle">
-      Développeur Web Backend
-    </p>
-    </div>
+     
         <h2 class="section-title">À propos de moi</h2>
-        <div class="about-content">
-            
-            <p style="margin-bottom: 1.5rem;">
-                Je suis un développeur passionné de 23 ans, animé par la curiosité et le goût du défi.
-                J'aime transformer les idées en solutions numériques innovantes, à la fois utiles et élégantes.
-            </p>
-            <p>
-                Toujours en quête d'apprentissage, je m'investis dans le développement web, en cherchant le parfait équilibre entre performance, simplicité et expérience utilisateur.
-                Pour moi, chaque ligne de code est une opportunité de créer, apprendre et progresser.
-            </p>
+        <div class="about-container">
+            <div class="about-avatar">
+                <img src="souley.jpeg" alt="ma photo" style="max-width: 100%; height: auto;">
+            </div>
+            <div class="about-content">
+                <p style="margin-bottom: 1.5rem;">
+                    Je suis un jeune ivoirien de 23 ans,passionné par le développement web<br> animé par la curiosité et le goût du défi.
+                    J'aime transformer les idées en solutions numériques innovantes,<br>  à la fois utiles et élégantes.
+                </p>
+                <p>
+                    Toujours en quête d'apprentissage, je m'investis dans le développement web,<br>  en cherchant le parfait équilibre entre performance, simplicité et expérience utilisateur.
+                    Pour moi, chaque ligne de code est une opportunité de créer,<br>  apprendre et progresser.
+                </p>
+            </div> 
         </div>
     </section>
 
 <section id="projets" class="fade-in">
     <h2 class="section-title">Mes Projets</h2>
-    <div class="card-grid">
+    
+    <!-- Menu des tabs -->
+    <div class="tabs-menu" role="tablist">
+        <button class="tab-button w--current" id="tab-recent" data-tab="recent" role="tab" aria-selected="true" aria-controls="content-recent" tabindex="0" onclick="showDiv('content-recent')">
+            <span>Projets Récents</span>
+        </button>
+        <button class="tab-button" id="tab-other" data-tab="other" role="tab" aria-selected="false" aria-controls="content-other" onclick="showDiv('content-other')">
+            <span>Autres Projets</span>
+        </button>
+    </div>
 
-        <div class="card">
-            <h3>Mise à jour d'un logiciel de gestion d'une grande école</h3>
-            <p>
-                Application de gestion complète d'une grande école en local, incluant :
-                <ul>
-                    <li>Programmation des cours par classe</li>
-                    <li>Création et gestion des classes</li>
-                    <li>Gestion des permissions des utilisateurs et des rôles</li>
-                </ul>
-            </p>
-            <div class="tags">
-                <span class="tag">PHP</span>
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
+    <!-- Contenu des tabs -->
+    <div class="tabs-container">
+        <!-- Tab 1: Projets Récents -->
+        <div class="tab-content w--current" id="content-recent" data-tab="recent" role="tabpanel" aria-labelledby="tab-recent">
+            <div class="card-grid">
+                 <div class="card">
+                    <h3>Système de Décompte de Voix</h3>
+                    <p>
+                        Tableau de bord interactif pour la visualisation et la saisie de données électorales en temps réel :
+                        <ul>
+                            <li>Affichage dynamique des résultats par bureau de vote</li>
+                            <li>Graphiques interactifs pour suivi des tendances</li>
+                            <li>Gestion sécurisée des utilisateurs et validations des résultats</li>
+                        </ul>
+                    </p>
+                    <div class="tags">
+                        <span class="tag">Laravel</span>
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+                 </div>
+
+                 <div class="card">
+                    <h3>Portfolio Personnel "The Visionary"</h3>
+                    <p>
+                        Site vitrine en HTML, CSS et JS pur pour présenter mes compétences et projets :
+                        <ul>
+                            <li>Design moderne et responsive</li>
+                            <li>Sections interactives pour les projets et le profil</li>
+                            <li>Optimisation de l'expérience utilisateur et navigation fluide</li>
+                        </ul>
+                    </p>
+                    <div class="tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+                 </div>
             </div>
         </div>
 
+        <!-- Tab 2: Autres Projets -->
+        <div class="tab-content" id="content-other" data-tab="other" role="tabpanel" aria-labelledby="tab-other" hidden>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Mise à jour d'un logiciel de gestion d'une grande école</h3>
+                    <p>
+                        Tableau de bord interactif pour la visualisation et la saisie de données électorales en temps réel :
+                        <ul>
+                            <li>Affichage dynamique des résultats par bureau de vote</li>
+                            <li>Graphiques interactifs pour suivi des tendances</li>
+                            <li>Gestion sécurisée des utilisateurs et validations des résultats</li>
+                        </ul>
+                    </p>
+                    <div class="tags">
+                        <span class="tag">Laravel</span>
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+                </div>
 
-        <div class="card">
-            <h3>Système de Décompte de Voix</h3>
-            <p>
-                Tableau de bord interactif pour la visualisation et la saisie de données électorales en temps réel :
-                <ul>
-                    <li>Affichage dynamique des résultats par bureau de vote</li>
-                    <li>Graphiques interactifs pour suivi des tendances</li>
-                    <li>Gestion sécurisée des utilisateurs et validations des résultats</li>
-                </ul>
-            </p>
-            <div class="tags">
-                <span class="tag">Laravel</span>
-                <span class="tag">HTML/CSS</span>
-                <span class="tag">JavaScript</span>
-            </div>
-        </div>
 
-
-        <div class="card">
-            <h3>Portfolio Personnel “The Visionary”</h3>
-            <p>
-                Site vitrine en HTML, CSS et JS pur pour présenter mes compétences et projets :
-                <ul>
-                    <li>Design moderne et responsive</li>
-                    <li>Sections interactives pour les projets et le profil</li>
-                    <li>Optimisation de l’expérience utilisateur et navigation fluide</li>
-                </ul>
-            </p>
-            <div class="tags">
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
-                <span class="tag">JavaScript</span>
+                <div class="card">
+                    <h3>Portfolio Personnel "The Visionary"</h3>
+                    <p>
+                        Site vitrine en HTML, CSS et JS pur pour présenter mes compétences et projets :
+                        <ul>
+                            <li>Design moderne et responsive</li>
+                            <li>Sections interactives pour les projets et le profil</li>
+                            <li>Optimisation de l'expérience utilisateur et navigation fluide</li>
+                        </ul>
+                    </p>
+                    <div class="tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-        <!-- Section Timeline -->
+<!-- Section Timeline -->
         <section id="timeline" class="fade-in">
             <h2 class="section-title">Parcours </h2>
             <div class="timeline-container">
@@ -226,74 +244,18 @@
                     <span>Git</span>
                 </div>
             </div>
+            <div class="card">
+                <div class="skill-item-mini">
+                    <i class="devicon-spring-original"></i>
+                    <span>Spring-Boot</span>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="contact" class="fade-in">
-        <h2 class="section-title">Contactez-moi</h2>
-        
-        <div class="contact-form-container">
-            <form id="contact-form" action="https://formspree.io/f/xqayvpwk" method="POST">
-                <div class="form-group">
-                    <label for="name">Nom complet *</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="subject">Sujet *</label>
-                    <input type="text" id="subject" name="subject" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message *</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; text-align: center;" >
-                    <i class="fas fa-message"></i> Envoyer le message
-                </button>
-                <div id="success-message" class="success-message" style="display:none; margin-top:1rem;">
-                    Merci ! Votre message a été envoyé avec succès.
-                </div>
-            </form>
-            <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                var form = document.getElementById('contact-form');
-                if(form) {
-                    form.addEventListener('submit', function(e) {
-                        setTimeout(function() {
-                            form.reset();
-                            var msg = document.getElementById('success-message');
-                            if(msg) { msg.style.display = 'block'; }
-                        }, 1000);
-                    });
-                }
-            });
-            </script>
-        </div>
-
-        <div style="text-align: center; margin: 3rem 0 1rem; opacity: 0.7;">
-            <p>Ou retrouvez-moi sur :</p>
-        </div>
-        <div class="contact-links">
-            <div class="contact-link" onclick="revealContact('phone')">
-                <i class="fas fa-phone"></i>
-                <span id="phone-info">Cliquez pour afficher le numéro</span>
-            </div>
-            <div class="contact-link" onclick="revealContact('email')">
-                <i class="fas fa-envelope"></i>
-                <span id="email-info">Cliquez pour afficher l'email</span>
-            </div>
-        </div>
-
-           
-    </section>
 
     <footer>
-                <div class="icon-links">
-            
-            
+                <div class="icon-links" >
             <a href="https://github.com/ouattsouleymane" target="_blank" rel="noopener noreferrer" class="icon-link">
                 <i class="fab fa-github"></i>
             </a>

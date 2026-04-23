@@ -15,50 +15,28 @@ window.addEventListener('DOMContentLoaded', function() {
     toggleBackToTop();
 });
 // Animation fade-in sur les sections au scroll (fix)
+const temps = 80;
 window.addEventListener('DOMContentLoaded', function() {
     function revealSections() {
         document.querySelectorAll('.fade-in').forEach(function(section) {
             var rect = section.getBoundingClientRect();
-            if (rect.top < window.innerHeight - 80) {
+            if (rect.top < window.innerHeight - temps) {
                 section.classList.add('animated');
             }
         });
     }
     window.addEventListener('scroll', revealSections);
     revealSections();
+
+    // Initialiser les tabindex des boutons
+    document.querySelectorAll('.tab-button').forEach(function(btn) {
+        btn.setAttribute('tabindex', '-1');
+    });
+    var firstBtn = document.querySelector('.tab-button.w--current');
+    if (firstBtn) {
+        firstBtn.setAttribute('tabindex', '0');
+    }
 });
-
-        var contactRevealed = {
-            phone: false,
-            email: false
-        };
-
-        function getContactInfo(type) {
-            var info = {
-                phone: { value: '+225 05 64 07 17 05', url: 'tel:+2250564071705' },
-                email: { value: 'souleymaneouattara1509@gmail.com', url: 'mailto:souleymaneouattara1509@gmail.com' }
-            };
-            return info[type];
-        }
-
-        function revealContact(type) {
-            if (!contactRevealed[type]) {
-                var info = getContactInfo(type);
-                var element = document.getElementById(type + '-info');
-                element.textContent = info.value;
-                contactRevealed[type] = true;
-                if (type !== 'email') {
-                    setTimeout(function() {
-                        window.open(info.url, '_blank');
-                    }, 300);
-                } else {
-                    var parent = element.parentElement;
-                    parent.onclick = function() {
-                        window.location.href = info.url;
-                    };
-                }
-            }
-        }
 
 
         function toggleTheme() {
@@ -90,7 +68,7 @@ window.addEventListener('DOMContentLoaded', function() {
                 toggleTheme();
             }
         });
-
+        const timeout = 50;
         function showSection(sectionId) {
             var sections = document.querySelectorAll('section');
             sections.forEach(function(section) {
@@ -101,8 +79,51 @@ window.addEventListener('DOMContentLoaded', function() {
             // Scroll fluide vers la section
             setTimeout(function() {
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 50);
+            }, timeout);
             document.querySelector('.nav-links').classList.remove('active');
+        }
+
+        function showDiv(divId) {
+            try {
+                // Validation du paramètre
+                if (!divId || typeof divId !== 'string') {
+                    console.error('showDiv: ID invalide');
+                    return;
+                }
+
+                // Cacher tous les tab-content
+                var allTabs = document.querySelectorAll('.tab-content');
+                allTabs.forEach(function(tab) {
+                    tab.classList.remove('w--current');
+                    tab.setAttribute('hidden', '');
+                });
+                
+                // Afficher le tab cible
+                var target = document.getElementById(divId);
+                if (!target) {
+                    console.error('showDiv: Element avec ID "' + divId + '" introuvable');
+                    return;
+                }
+                target.classList.add('w--current');
+                target.removeAttribute('hidden');
+                
+                // Mettre à jour les boutons
+                document.querySelectorAll('.tab-button').forEach(function(btn) {
+                    btn.classList.remove('w--current');
+                    btn.setAttribute('aria-selected', 'false');
+                    btn.setAttribute('tabindex', '-1');
+                });
+                
+                // Activer le bouton correspondant
+                var activeBtn = document.querySelector('[aria-controls="' + divId + '"]');
+                if (activeBtn) {
+                    activeBtn.classList.add('w--current');
+                    activeBtn.setAttribute('aria-selected', 'true');
+                    activeBtn.setAttribute('tabindex', '0');
+                }
+            } catch (error) {
+                console.error('Erreur dans showDiv:', error);
+            }
         }
 
         function toggleMobileMenu() {
