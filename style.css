@@ -12,10 +12,6 @@ footer {
     align-items: center;
     margin-bottom: 1.2rem;
 }
-.about-avatar img {
-    border-radius: 8px;
-}
-
 .about-avatar .avatar {
         margin-bottom: 1.2rem;
 }
@@ -32,17 +28,6 @@ footer {
         margin-bottom: 0.3rem;
     }
 }
-
-.tab-button{
-    font-size: 1.5rem;
-    background-color: #fcc436;
-    border-radius:8px;
-    color:white;
-    border-color: none;
-    margin:0.5rem;
-    size:2rem;
-}
-
 .about-avatar .avatar {
     margin-bottom: 1.2rem;
 }
@@ -51,10 +36,34 @@ footer {
     margin-bottom: 0.5rem;
 }
 .dark .line {
-    color: #f2e2b8;
+    color: #fff;
 }
 .btn.btn-primary[type="submit"] {
     justify-content: center;
+    text-align: center;
+}
+.icon-links {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.2rem;
+}
+.about-avatar img {
+    border-radius: 8px;
+}
+
+.about-avatar .avatar {
+        margin-bottom: 1.2rem;
+}
+.line{
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: #050505;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    margin-bottom: 0.7rem;
+    letter-spacing: 0.4px;
     text-align: center;
 }
 
@@ -94,9 +103,11 @@ footer {
     margin-left: 0.3em;
 }
 @media (max-width: 600px) {
-    .headline { font-size: 1.1rem; }
+    .headline { font-size: 3rem; }
     .main-title { font-size: 1.3rem; }
     .skills-animated { gap: 0.3rem; }
+    .line{
+        font-size: 1.5rem;}
 }
 /* === Timeline Section === */
 .timeline-container {
@@ -422,21 +433,21 @@ footer {
         }
 
         section {
-            min-height: 100vh;
-            padding: 120px 1.5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: none;
+            display: block;
+            margin: 2.5rem auto;
+            padding: 3rem 1.5rem;
+            scroll-margin-top: 100px; /* Ajuste le décalage pour les ancres */
         }
 
+        /* Supprime les styles qui masquent les sections non actives */
         section.active {
             display: block;
-            animation: fadeIn 0.5s;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Ajuste la hauteur de la section bannière pour qu'elle s'intègre dans une seule page */
+        .banner {
+            min-height: auto;
+            padding: 6rem 1rem;
         }
 
         #accueil {
@@ -469,13 +480,13 @@ img{
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 1rem;
             line-height: 1.3;
         }
 
         .subtitle {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             margin-bottom: 2rem;
             opacity: 0.8;
         }
@@ -488,10 +499,10 @@ img{
         }
 
         .btn {
-            padding: 1rem 2rem;
+            padding: 0.8rem 1.5rem;
             border: none;
             border-radius: 50px;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
@@ -523,37 +534,21 @@ img{
 
         .card-grid {
             display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 4fr));
             gap: 2.5rem;
             margin: 2.5rem 0;
+            margin-left: 2.5rem;
+            margin-right: 2.5rem;
             align-items: stretch;
         }
 
-        #competences .card-grid {
-            grid-template-columns: repeat(4, 1fr);
-        }
-
-        #projets .card-grid {
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        }
-
-        #projets .card {
+        .card {
             padding: 2.2rem 2rem 2rem 2rem;
             border-radius: 20px;
             transition: all 0.3s;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             text-align: left;
-            min-height: 100px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        #competences .card {
-            padding: 2.2rem 2rem 2rem 2rem;
-            border-radius: 20px;
-            transition: all 0.3s;
-            text-align: left;
-            min-height: 90px;
+            min-height: 120px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -590,7 +585,7 @@ img{
 
         .card h3 {
             margin-bottom: 0.5rem;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             text-align: left;
         }
 
@@ -598,6 +593,7 @@ img{
             margin-bottom: 0.5rem;
             opacity: 0.8;
             line-height: 1.6;
+            font-size: 0.95rem;
         }
 
         .tags {
@@ -612,30 +608,26 @@ img{
             border-radius: 12px;
             font-size: 0.97rem;
             background: rgba(102, 126, 234, 0.2);
-            color: #e3d4b0;
+            color: #667eea;
             font-weight: 600;
             box-shadow: 0 2px 8px rgba(52,56,94,0.07);
         }
 
-        /* === Tabs Styles projets === */
-        .tabs-menu {
-            display: flex;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
+        .about-content {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            margin-left:2.5rem;
+            margin-right:2.5rem;
+            border-radius: 20px;
+            line-height: 1.8;
+            font-size: 1.3rem;
         }
 
-        .tab-button {
-            padding: 0.8rem 1.5rem;
-            border: 2px solid transparent;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            background: rgba(255, 255, 255, 0.05);
-            color: inherit;
+        .contact-form-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2.5rem;
+            border-radius: 20px;
         }
 
         .light .tab-button {
@@ -931,12 +923,23 @@ img{
             .about-content {
                 padding: 0;
                 font-size: 1rem;
-                order: 2;
+                margin-left: 0; /* Supprime les marges latérales pour mobile */
+                margin-right: 0;
             }
 
-            .about-container {
-                flex-direction: column-reverse;
-                gap: 2rem;
+            .card {
+                padding: 1.5rem;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin-left: 0; /* Supprime les marges latérales pour mobile */
+                margin-right: 0;
+            }
+
+            section {
+                padding: 100px 1rem 2rem;
             }
 
             .about-avatar {
