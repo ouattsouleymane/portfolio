@@ -17,7 +17,7 @@ window.addEventListener('DOMContentLoaded', function() {
 // Animation fade-in sur les sections au scroll (fix)
 const temps = 80;
 window.addEventListener('DOMContentLoaded', function() {
-    function revealSections() {
+   /* function revealSections() {
         document.querySelectorAll('.fade-in').forEach(function(section) {
             var rect = section.getBoundingClientRect();
             if (rect.top < window.innerHeight - temps) {
@@ -26,7 +26,7 @@ window.addEventListener('DOMContentLoaded', function() {
         });
     }
     window.addEventListener('scroll', revealSections);
-    revealSections();
+    revealSections();*/
 
     // Initialiser les tabindex des boutons
     document.querySelectorAll('.tab-button').forEach(function(btn) {
@@ -68,8 +68,8 @@ window.addEventListener('DOMContentLoaded', function() {
                 toggleTheme();
             }
         });
-        const timeout = 50;
-        function showSection(sectionId) {
+        //const timeout = 50;
+        /*function showSection(sectionId) {
             var sections = document.querySelectorAll('section');
             sections.forEach(function(section) {
                 section.classList.remove('active');
@@ -81,7 +81,7 @@ window.addEventListener('DOMContentLoaded', function() {
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, timeout);
             document.querySelector('.nav-links').classList.remove('active');
-        }
+        }*/
 
         function showDiv(divId) {
             try {
